@@ -8,8 +8,6 @@ function App() {
   return (
     <>
       <BookList></BookList>
-
-      <div>Hello World</div>
         
     </>
   );
