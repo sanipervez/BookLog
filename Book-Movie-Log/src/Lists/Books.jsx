@@ -6,6 +6,7 @@ function Books() {
     const [books, setBooks] = useState([]);
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
+    const [status, setStatus] = useState('');
     const [rating, setRating] = useState('');
 
 
@@ -19,12 +20,13 @@ function Books() {
 
     //creating a function that stores values into an array, and initializes the state of each value as default. 
     const addBook = () => {
-        const newBook = { title, author, rating };
+        const newBook = { title, author, status, rating };
         const updatedBooks = [...books, newBook];
         setBooks(updatedBooks); 
         localStorage.setItem('books', JSON.stringify(updatedBooks));
         setTitle('');
         setAuthor('');
+        setStatus('');
         setRating('');
     };
     const deleteBook = (index) => {
@@ -65,6 +67,18 @@ function Books() {
                 <option value="★★★★☆">★★★★☆</option>
                 <option value="★★★★★">★★★★★</option>
             </select>
+
+            <select 
+                className='select'
+                value={status}
+                onChange={(e) =>  setStatus(e.target.value)}
+            >
+                <option value="">Status</option>
+                <option value="To Read">To read</option>
+                <option value="In progress">In progress</option>
+                <option value="Completed">Completed</option>
+                
+            </select>
             
             <button 
                 className='button'
@@ -75,7 +89,7 @@ function Books() {
             <ol className='data'>
                 {books.map((book, index) => (
                     <li key={index}>
-                        {book.title} by {book.author} Rating: {book.rating}
+                        {book.title} by {book.author} , Status: {status} Rating: {book.rating}
                         <button 
                             className='button'
                             onClick={() => deleteBook(index)}>
