@@ -13,6 +13,7 @@
     margin: 20px;
     color: #6B4C35;
     text-align: center;
+    font-weight: bold;
 }
 
 .form-group {
@@ -33,6 +34,7 @@
     color: #6B4C35;
     margin-right: 10px; /* Space between elements */
     flex: 1; /* Adjust width as needed */
+    font-weight: bold;
 }
 
 .button {
@@ -52,7 +54,7 @@
     font-family: 'Courier New', Courier, monospace;
     min-width: 400px;
     background-color: rgb(255, 255, 248); 
-
+    font-weight: bold;
     border-radius: 10px; /* Round the borders of the table */
     overflow: hidden; 
     color: #6B4C35;
@@ -69,7 +71,30 @@
     background-color: rgb(255, 255, 248);
 }
 
-/* Change the placeholder color */
 .input::placeholder {
     color: #6B4C35;
 }
+
+
+
+.checkmark {
+    display: inline-block;
+    width: 14px;
+    height: 8px;
+    border-left: 3px solid rgb(120, 179, 25); /* Change color to green for completed books */
+    border-bottom: 3px solid rgb(120, 179, 25); /* Change color to green for completed books */
+    transform: rotate(-45deg);
+    position: left;
+    animation: checkmark-animation 1.0s ease-in-out;
+}
+
+@keyframes checkmark-animation {
+    0% {
+        transform: scale(0);
+    }
+    30% {
+        transform: scale(2);
+    }
+}
+
+

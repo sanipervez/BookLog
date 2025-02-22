@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Books.css';
-
+import BookCover from './BookCover.jsx'; 
 
 function Books() {
     const [books, setBooks] = useState([]);
@@ -8,10 +8,9 @@ function Books() {
     const [author, setAuthor] = useState('');
     const [status, setStatus] = useState('');
     const [rating, setRating] = useState('');
-    const [genre, setGenre] = useState(''); 
+    const [genre, setGenre] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
-
-    // Retrieve books from localStorage when component mounts
     useEffect(() => {
         const storedBooks = JSON.parse(localStorage.getItem('books'));
         if (storedBooks) {
@@ -19,9 +18,9 @@ function Books() {
         }
     }, []);
 
-    // Creating a function that stores values into an array, and initializes the state of each value as default.
     const addBook = () => {
         const newBook = { title, author, genre, status, rating };
+        console.log('Adding book:', newBook); // Debugging line
         const updatedBooks = [...books, newBook];
         setBooks(updatedBooks);
         localStorage.setItem('books', JSON.stringify(updatedBooks));
@@ -30,7 +29,6 @@ function Books() {
         setGenre('');
         setStatus('');
         setRating('');
-
     };
 
     const deleteBook = (index) => {
@@ -40,7 +38,7 @@ function Books() {
     };
 
     const updateBookStatus = (index, newStatus) => {
-        const updatedBooks = books.map((book, i) => 
+        const updatedBooks = books.map((book, i) =>
             i === index ? { ...book, status: newStatus } : book
         );
         setBooks(updatedBooks);
@@ -48,12 +46,18 @@ function Books() {
     };
 
     const updateBookRating = (index, newRating) => {
-        const updatedBooks = books.map((book, i) => 
+        const updatedBooks = books.map((book, i) =>
             i === index ? { ...book, rating: newRating } : book
         );
         setBooks(updatedBooks);
         localStorage.setItem('books', JSON.stringify(updatedBooks));
     };
+
+    const filteredBooks = books.filter(book =>
+        book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    console.log('Filtered Books:', filteredBooks); // Debugging line
 
     return (
         <div className='container'>
@@ -80,7 +84,6 @@ function Books() {
                     value={genre}
                     onChange={(e) => setGenre(e.target.value)}
                 />
-                
                 <button
                     className="button"
                     onClick={addBook}
@@ -88,10 +91,23 @@ function Books() {
                     Log
                 </button>
             </div>
+            <div className='form-group'>
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Search by Title or Author"
+                    value={searchQuery}
+                    onChange={(e) => {
+                        console.log('Search Query:', e.target.value); // Debugging line
+                        setSearchQuery(e.target.value);
+                    }}
+                />
+            </div>
             <div className='table-container'>
                 <table className='table'>
                     <thead>
                         <tr>
+                            <th>Book</th>
                             <th>Title</th>
                             <th>Author</th>
                             <th>Genre</th>
@@ -101,8 +117,11 @@ function Books() {
                         </tr>
                     </thead>
                     <tbody>
-                        {books.map((book, index) => (
+                        {filteredBooks.map((book, index) => (
                             <tr key={index}>
+                                <td>
+                                    <BookCover title={book.title} /> 
+                                </td>
                                 <td>{book.title}</td>
                                 <td>{book.author}</td>
                                 <td>{book.genre}</td>
@@ -112,7 +131,7 @@ function Books() {
                                         value={book.rating}
                                         onChange={(e) => updateBookRating(index, e.target.value)}
                                     >
-                                         <option value="">Rating</option>
+                                        <option value="">Rating</option>
                                         <option value="★☆☆☆☆">★☆☆☆☆</option>
                                         <option value="★★☆☆☆">★★☆☆☆</option>
                                         <option value="★★★☆☆">★★★☆☆</option>
@@ -131,6 +150,9 @@ function Books() {
                                         <option value="In Progress">In Progress</option>
                                         <option value="Completed">Completed</option>
                                     </select>
+                                    {book.status === 'Completed' && (
+                                        <span className="checkmark"></span>
+                                    )}
                                 </td>
                                 <td>
                                     <button className="button" onClick={() => deleteBook(index)}>Delete</button>
@@ -145,3 +167,4 @@ function Books() {
 }
 
 export default Books;
+
