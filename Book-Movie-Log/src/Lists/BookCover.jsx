@@ -4,7 +4,7 @@ const BookCover = ({ title }) => {
     const [coverUrl, setCoverUrl] = useState('');
 
     useEffect(() => {
-        const apiKey = 'AIzaSyCLH7XzFnSACyHSzEttPclAIPuHo-i1qus';
+        const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
         const query = title;
         const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`;
 
@@ -33,4 +33,3 @@ const BookCover = ({ title }) => {
 };
 
 export default BookCover;
-
