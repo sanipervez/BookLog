@@ -19,6 +19,11 @@ function Books() {
     }, []);
 
     const addBook = () => {
+        if (!title || !author || !genre) {
+            alert('Please enter all fields to log a book!');
+            return; // Prevent the book from being added if any field is empty
+        }
+    
         const newBook = { id: uuidv4(), title, author, genre, status, rating };
         setBooks(prevBooks => {
             const updatedBooks = [...prevBooks, newBook];
@@ -31,6 +36,7 @@ function Books() {
         setStatus('');
         setRating('');
     };
+    
 
     const deleteBook = (id) => {
         setBooks(prevBooks => {
@@ -68,7 +74,6 @@ function Books() {
         return 0;
     });
     
-
     return (
         <div className='container'>
             <h1 className='title'>Book Log</h1>
