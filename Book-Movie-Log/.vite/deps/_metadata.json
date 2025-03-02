@@ -7,19 +7,19 @@
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "7acb7973",
+      "fileHash": "add968d0",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "59455751",
+      "fileHash": "c1855eef",
       "needsInterop": true
     },
     "uuid": {
       "src": "../../node_modules/uuid/dist/esm-browser/index.js",
       "file": "uuid.js",
-      "fileHash": "e052b527",
+      "fileHash": "036165a4",
       "needsInterop": false
     }
   },
