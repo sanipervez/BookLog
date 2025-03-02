@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'; // Unique IDs for each book
 import './Books.css';
 import BookCover from './BookCover.jsx';
 
+
 function Books() {
     const [books, setBooks] = useState([]);
     const [title, setTitle] = useState('');
@@ -76,7 +77,9 @@ function Books() {
     
     return (
         <div className='container'>
-            <h1 className='title'>Book Log</h1>
+            <h1 
+                className='title'>Book Log
+            </h1>
             <div className='form-group'>
                 <input className="input" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <input className="input" type="text" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
