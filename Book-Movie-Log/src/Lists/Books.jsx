@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Unique IDs for each book
 import './Books.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import BookCover from './BookCover.jsx';
 
 
@@ -80,7 +81,7 @@ function Books() {
             <h1 
                 className='title'>Book Log
             </h1>
-            <div className='form-group'>
+            <div className='row form-group'>
                 <input className="input" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <input className="input" type="text" placeholder="Author" value={author} onChange={(e) => setAuthor(e.target.value)} />
                 <input className="input" type="text" placeholder="Genre" value={genre} onChange={(e) => setGenre(e.target.value)} />

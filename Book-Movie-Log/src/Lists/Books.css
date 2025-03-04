@@ -1,13 +1,16 @@
-
-
 .container {
     background-color: beige;
     padding: 20px;
     border-radius: 10px;
-    margin: 20px;
+    margin: 20px auto;
     font-family: 'Courier New', Courier, monospace;
     border: 4px solid rgb(203, 203, 165);
     color: #6B4C35;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 300px; /* Prevents shrinking */
+    box-sizing: border-box;
 }
 
 
@@ -19,13 +22,16 @@
     font-weight: bold;
 }
 
+
 .form-group {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; /
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
+
 
 .input,
 .select,
@@ -35,18 +41,28 @@
     padding: 10px;
     background-color: rgb(255, 255, 248);
     color: #6B4C35;
-    margin-right: 10px; /* Space between elements */
-    flex: 1; /* Adjust width as needed */
     font-weight: bold;
+    flex: 1;
+    min-width: 80px; 
+    text-align: center;
 }
 
 .button {
-    flex: initial; /* Prevent button from stretching */
+    flex: initial;
+    flex-shrink: 0;
+    min-width: 100px; 
+    cursor: pointer;
 }
 
+.button:hover {
+    background-color: #6B4C35;
+    color: white;
+}
+
+/* Table Styling - allows horizontal and vertical scrolling */
 .table-container {
     width: 100%;
-    overflow-x: auto;
+    overflow: auto; 
 }
 
 .table {
@@ -56,36 +72,39 @@
     font-size: 1em;
     font-family: 'Courier New', Courier, monospace;
     min-width: 400px;
-    background-color: rgb(255, 255, 248); 
+    background-color: rgb(255, 255, 248);
     font-weight: bold;
-    border-radius: 10px; /* Round the borders of the table */
-    overflow: hidden; 
-    color: #6B4C35;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     padding: 12px 15px;
     border: 1px solid #ddd;
-    text-align:start;
-    
+    text-align: start;
+    color: #6B4C35 !important;
 }
 
 .table th {
     background-color: rgb(255, 255, 248);
 }
 
-.input::placeholder {
-    color: #6B4C35;
+.table tr:hover {
+    background-color: #f1f1f1;
 }
 
 
+.input::placeholder {
+    color: #6B4C35;
+}
 
 .checkmark {
     display: inline-block;
     width: 14px;
     height: 8px;
-    border-left: 3px solid rgb(120, 179, 25); /* Change color to green for completed books */
-    border-bottom: 3px solid rgb(120, 179, 25); /* Change color to green for completed books */
+    border-left: 3px solid rgb(120, 179, 25);
+    border-bottom: 3px solid rgb(120, 179, 25);
     transform: rotate(-45deg);
     position: left;
     animation: checkmark-animation 1.0s ease-in-out;
@@ -100,4 +119,47 @@
     }
 }
 
+/* Responsive layout for diff. screen sizes */
 
+/* Medium screens */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input,
+    .select,
+    .button {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .table {
+        font-size: 0.9em;
+    }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.5em;
+        margin: 10px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+        font-size: 0.8em;
+    }
+
+    .button {
+        font-size: 0.9em;
+        padding: 6px;
+        min-width: 90px; 
+    }
+}
