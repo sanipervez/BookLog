@@ -152,8 +152,8 @@ function Books() {
                                             fontWeight: 'bold',
                                             width: '100%',
                                             height: '100px',
-                                            whiteSpace: 'pre-wrap', // Preserve whitespace and wrap text
-                                            overflowWrap: 'break-word' // Break long words
+                                            whiteSpace: 'pre-wrap', //wraps text
+                                            overflowWrap: 'break-word' // Break up long words
                                         }}
                                     />
                                 </td>
