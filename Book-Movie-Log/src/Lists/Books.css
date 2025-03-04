@@ -9,7 +9,7 @@
     overflow-x: auto;
     width: 100%;
     max-width: 100%;
-    min-width: 300px; /* Prevents shrinking */
+    min-width: 300px; /* Prevents shrinking beyond threshold*/
     box-sizing: border-box;
 }
 
@@ -94,7 +94,7 @@
     background-color: #f1f1f1;
 }
 
-
+/*changes color of placeholder text*/
 .input::placeholder {
     color: #6B4C35;
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid'; // Unique IDs for each book
+import { v4 as uuidv4 } from 'uuid'; // Unique IDs for each book to keep track of changes
 import './Books.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BookCover from './BookCover.jsx';
@@ -141,6 +141,8 @@ function Books() {
                                     {book.status === 'Completed' && <span className="checkmark"></span>}
                                 </td>
                                 <td>
+
+                                    {/*text Area allows for text to over lap and section to expand according to i/p */}
                                     <textarea
                                         className="form-control input" 
                                         type="text" value={book.note || ''} 
