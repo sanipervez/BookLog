@@ -121,7 +121,7 @@
 
 /* Responsive layout for diff. screen sizes */
 
-/* Medium screens */
+/* Med screens */
 @media (max-width: 768px) {
     .form-group {
         flex-direction: column;
@@ -140,7 +140,7 @@
     }
 }
 
-/* Small screens */
+/* Sml screens */
 @media (max-width: 480px) {
     .container {
         padding: 10px;

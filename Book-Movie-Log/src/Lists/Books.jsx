@@ -12,6 +12,7 @@ function Books() {
     const [status, setStatus] = useState('');
     const [rating, setRating] = useState('');
     const [genre, setGenre] = useState('');
+    const [note, setNote] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [sortCriteria, setSortCriteria] = useState('');
 
@@ -26,7 +27,7 @@ function Books() {
             return; // Prevent the book from being added if any field is empty
         }
     
-        const newBook = { id: uuidv4(), title, author, genre, status, rating };
+        const newBook = { id: uuidv4(), title, author, genre, status, rating, note};
         setBooks(prevBooks => {
             const updatedBooks = [...prevBooks, newBook];
             localStorage.setItem('books', JSON.stringify(updatedBooks));
@@ -37,6 +38,7 @@ function Books() {
         setGenre('');
         setStatus('');
         setRating('');
+        setNote('');
     };
     
 
@@ -95,6 +97,7 @@ function Books() {
                     <option value="author">Author</option>
                     <option value="genre">Genre</option>
                     <option value="status">Status</option>
+                    <option value="status">Notes</option>
                 </select>
             </div>
             <div className='table-container'>
@@ -107,6 +110,7 @@ function Books() {
                             <th>Genre</th>
                             <th>Rating</th>
                             <th>Status</th>
+                            <th>Notes</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -135,6 +139,23 @@ function Books() {
                                         <option value="Completed">Completed</option>
                                     </select>
                                     {book.status === 'Completed' && <span className="checkmark"></span>}
+                                </td>
+                                <td>
+                                    <textarea
+                                        className="form-control input" 
+                                        type="text" value={book.note || ''} 
+                                        onChange={(e) => updateBook(book.id, 'note', e.target.value)} 
+                                        style={{
+                                            border: '2px solid rgb(203, 203, 165)',
+                                            color: '#6B4C35',
+                                            backgroundColor: 'rgb(255, 255, 248)',
+                                            fontWeight: 'bold',
+                                            width: '100%',
+                                            height: '100px',
+                                            whiteSpace: 'pre-wrap', // Preserve whitespace and wrap text
+                                            overflowWrap: 'break-word' // Break long words
+                                        }}
+                                    />
                                 </td>
                                 <td>
                                     <button className="button" onClick={() => deleteBook(book.id)}>Delete</button>
