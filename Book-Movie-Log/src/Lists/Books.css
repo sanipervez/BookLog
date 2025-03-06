@@ -1,10 +1,10 @@
 .container {
     background-color: beige;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 20px;
     margin: 20px auto;
     font-family: 'Courier New', Courier, monospace;
-    border: 4px solid rgb(203, 203, 165);
+    border: 4px solid rgb(169, 142, 104);
     color: #6B4C35;
     overflow-x: auto;
     width: 100%;
@@ -37,7 +37,7 @@
 .select,
 .button {
     border: 2px solid rgb(203, 203, 165);
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 10px;
     background-color: rgb(255, 255, 248);
     color: #6B4C35;
@@ -63,6 +63,7 @@
 .table-container {
     width: 100%;
     overflow: auto; 
+    background-color: rgb(255, 255, 248) ;
 }
 
 .table {
@@ -84,14 +85,13 @@
     border: 1px solid #ddd;
     text-align: start;
     color: #6B4C35 !important;
+    background-color: rgb(255, 255, 248) !important;
+    
 }
 
-.table th {
-    background-color: rgb(255, 255, 248);
-}
 
 .table tr:hover {
-    background-color: #f1f1f1;
+    background-color: rgb(255, 255, 248);
 }
 
 /*changes color of placeholder text*/

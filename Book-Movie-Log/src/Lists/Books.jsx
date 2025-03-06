@@ -43,11 +43,16 @@ function Books() {
     
 
     const deleteBook = (id) => {
-        setBooks(prevBooks => {
-            const updatedBooks = prevBooks.filter(book => book.id !== id);
-            localStorage.setItem('books', JSON.stringify(updatedBooks));
-            return updatedBooks;
-        });
+        const confirmed = confirm('Are you sure you want to delete this book?');
+    
+        if (confirmed) {
+            // If the user confirms, proceed with deletion
+            setBooks(prevBooks => {
+                const updatedBooks = prevBooks.filter(book => book.id !== id);
+                localStorage.setItem('books', JSON.stringify(updatedBooks));
+                return updatedBooks;
+            });
+        }
     };
 
     const updateBook = (id, field, value) => {
@@ -79,7 +84,7 @@ function Books() {
     });
     
     return (
-        <div className='container'>
+        <div className='container' >
             <h1 
                 className='title'>Book Log
             </h1>
@@ -89,7 +94,7 @@ function Books() {
                 <input className="input" type="text" placeholder="Genre" value={genre} onChange={(e) => setGenre(e.target.value)} />
                 <button className="button" onClick={addBook}>Log</button>
             </div>
-            <div className='form-group'>
+            <div className='form-group' >
                 <input className="input" type="text" placeholder="Search by Title or Author" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                 <select className="select" value={sortCriteria} onChange={(e) => setSortCriteria(e.target.value)}>
                     <option value="">Sort by</option>
@@ -100,7 +105,7 @@ function Books() {
                     <option value="status">Notes</option>
                 </select>
             </div>
-            <div className='table-container'>
+            <div className='table-container' style={{ backgroundColor: 'beige' }}>
                 <table className='table'>
                     <thead>
                         <tr>
