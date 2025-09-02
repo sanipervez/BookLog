@@ -2,7 +2,7 @@
 
 A React app for tracking books with AI-powered recommendations.
 
-## Link:
+## Try it Out!
 https://sanipervez.github.io/BookLog/
 
 ## Features
