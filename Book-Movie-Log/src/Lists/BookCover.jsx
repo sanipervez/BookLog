@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 const BookCover = ({ title }) => {
     const [coverUrl, setCoverUrl] = useState('');
-
+    
     useEffect(() => {
         const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
         const query = title;
         const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`;
-
+        
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -24,9 +24,9 @@ const BookCover = ({ title }) => {
     return (
         <div>
             {coverUrl ? (
-                <img src={coverUrl} alt={`${title} cover`} />
+                <img src={coverUrl} alt={`${title} cover`} className="book-cover-img" />
             ) : (
-                <p>No cover available</p>
+                <div className="book-cover-placeholder">No cover available</div>
             )}
         </div>
     );
